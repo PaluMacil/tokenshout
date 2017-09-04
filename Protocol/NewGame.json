@@ -12,9 +12,9 @@
       "Traps",
       "Teleports",
       "WinCheckpoints"
-    ],
-    "Players": 4,
-    "YourID": 2
+    ]
   },
+  "Players": 4,
+  "YourID": 2,
   "Version": 1
 }
