@@ -1,0 +1,39 @@
+{
+  "GameID": "8250e8b8-ae41-4ebc-9aeb-86b029bbff5c",
+  "Players": [
+    {
+      "ID": 1,
+      "Position": {
+        "X": 0,
+        "Y": 0
+      },
+      "Actions": [
+        "Shout",
+        "Exited"
+      ]
+    }
+  ],
+  "Room": {
+    "Doors": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ],
+    "Entities": [
+      {
+        "Type": "Token",
+        "ID": 2
+      },
+      {
+        "Type": "Player",
+        "ID": 4
+      }
+    ]
+  },
+  "AllowedActions": [
+    "Move",
+    "Shout",
+    "Wait"
+  ]
+}

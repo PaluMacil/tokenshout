@@ -1,0 +1,20 @@
+{
+  "GameID": "8250e8b8-ae41-4ebc-9aeb-86b029bbff5c",
+  "Map": {
+    "Size": {
+      "Width": 0,
+      "Height": 0
+    },
+    "Rules": [
+      "Doors",
+      "Checkpoints",
+      "Poisons",
+      "Traps",
+      "Teleports",
+      "WinCheckpoints"
+    ],
+    "Players": 4,
+    "YourID": 2
+  },
+  "Version": 1
+}
