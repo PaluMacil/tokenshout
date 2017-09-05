@@ -11,6 +11,7 @@ func main() {
 	// set port from default or command flag
 	var port string
 	flag.StringVar(&port, "p", "12345", "port to serve tokenshout")
+	flag.Parse()
 	// create multiplexer from standard library and handle endpoints
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/ping", func(w http.ResponseWriter, r *http.Request) {
