@@ -6,6 +6,9 @@ type Coord struct {
 	Y int
 }
 
+// Grid holds the two dimensional slice of rooms
+type Grid [][]Room
+
 // Map indicated map size and rules
 type Map struct {
 	Size  Size
@@ -13,8 +16,12 @@ type Map struct {
 	Grid  Grid `json:"-"`
 }
 
-// Grid holds the two dimensional slice of rooms
-type Grid [][]Room
+// Room defines a single room in the game
+type Room struct {
+	Doors          []string
+	Entities       []Entity
+	AllowedActions []string
+}
 
 // Size indicates width and height
 type Size struct {
