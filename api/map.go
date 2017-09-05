@@ -10,7 +10,11 @@ type Coord struct {
 type Map struct {
 	Size  Size
 	Rules []string
+	Grid  Grid `json:"-"`
 }
+
+// Grid holds the two dimensional slice of rooms
+type Grid [][]Room
 
 // Size indicates width and height
 type Size struct {
