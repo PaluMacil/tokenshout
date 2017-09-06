@@ -5,6 +5,11 @@ var neDoors = []string{"N", "E"}
 var nwDoors = []string{"N", "W"}
 var seDoors = []string{"E", "S"}
 var swDoors = []string{"S", "W"}
+var nesDoors = []string{"N", "E", "S"}
+var nwsDoors = []string{"N", "W", "S"}
+var eswDoors = []string{"E", "S", "W"}
+var enwDoors = []string{"E", "n", "W"}
+
 var allActions = []string{
 	"Move",
 	"Shout",
@@ -31,30 +36,45 @@ func ProofOfConceptMap(playerCount int) Map {
 			if x == 0 {
 				//generate north edge and north corners
 				if y == 0 {
-
+					grid[x][y].Doors = seDoors
 				} else if y == 4 {
-
+					grid[x][y].Doors = neDoors
 				} else {
-
+					grid[x][y].Doors = nesDoors
 				}
 			} else if x == 4 {
 				//generate south edge and south corners
 				if y == 0 {
-
+					grid[x][y].Doors = swDoors
 				} else if y == 4 {
-
+					grid[x][y].Doors = nwDoors
 				} else {
-
+					grid[x][y].Doors = nwsDoors
 				}
 			} else if y == 0 {
-				//generate west edge
-
+				//generate north edge
+				grid[x][y].Doors = eswDoors
 			} else if y == 4 {
-				//generate east edge
-
+				//generate south edge
+				grid[x][y].Doors = enwDoors
 			} else {
 				grid[x][y].Doors = allDoors
 			}
+		}
+		start := Entity{Type: "Start", ID: 0}
+		tokenOne := Entity{Type: "Token", ID: 1}
+		tokenTwo := Entity{Type: "Token", ID: 2}
+		end := Entity{Type: "End", ID: 3}
+		grid[1][4].Entities = append(grid[1][4].Entities, start)
+		grid[3][4].Entities = append(grid[3][4].Entities, tokenOne)
+		grid[0][1].Entities = append(grid[0][1].Entities, tokenTwo)
+		grid[4][2].Entities = append(grid[4][2].Entities, end)
+		for p := 0; p < playerCount; p++ {
+			player := Entity{
+				Type: "Player",
+				ID:   p,
+			}
+			grid[1][4].Entities = append(grid[1][4].Entities, player)
 		}
 	}
 	return Map{
