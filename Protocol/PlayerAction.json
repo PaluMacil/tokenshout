@@ -1,0 +1,36 @@
+/**
+ * Sends the selected action a client selected.
+ * Direction: Client To Server
+ * Why is both ID and Key given? This is to aid in origination authenticity.
+ *   In an environment where the IP address of the clients can not be used to
+ *   identify them (think multiple clients behind a router with one public IP)
+ *   or are otherwise unreliable, the pair of ID and KEY can be used to increase
+ *   trust that the client is who they say they are. If SSL is used this becomes
+ *   a moot point.
+ *
+ * Example: 
+ * Server's internal state has player 4 at (0,0)
+ * Client decides on action and sends update
+ *   Move to (1,0)
+ * Server gets packet, identifies player 4, sees action is move and
+ * sees new position of (1,0). Validates that player can move to (1,0)
+ * and if valid makes the move.
+ */
+{
+  // Master ID of the in-progress game map
+  "GameID": "8250e8b8-ae41-4ebc-9aeb-86b029bbff5c",
+  // The player that took the action
+  "Player": {
+    // ID of the player
+    "ID": 4,
+    // Key of the player
+    "Key": "45523e6d-01fc-445f-aec1-bccb917f8b53",
+    // Position of the player (according to the client)
+    "Position": {
+      "X": 1,
+      "Y": 0
+    },
+    // Action performed
+    "Action": "Move"
+  }
+}

@@ -1,20 +1,74 @@
+/**
+ * Sends map and player parameters to a connected client upon new game.
+ */
 {
+  // Master ID of the in-progress game map
   "GameID": "8250e8b8-ae41-4ebc-9aeb-86b029bbff5c",
+  // Information about the map
   "Map": {
+    // Dimension of the map
     "Size": {
       "Width": 0,
       "Height": 0
     },
+    // Rules in-play
+    // All rules should be composable
     "Rules": [
+      // Rooms have doors (V1)
       "Doors",
+      // Rooms have doors that only allow passage in one direction (V2+)
+      "OneWayDoors",
+      // Some doors require a key to open (V2+)
+      "LockedDoors",
+      // There are checkpoints tokens (amount unknown) (V1)
       "Checkpoints",
+      // Must shout to claim checkpoint token in same room as player (V1)
+      "ShoutClaim",
+      // Shouting must be the only action (V1)
+      "ShoutConsumesTurn",
+      // Only receive player information, and only position, if that player occupies the same room (V2+)
+      "Stealth",
+      // Will not receive any information about other players (V2+)
+      "Isolation"
+    ],
+    // Things that designed to impead progress
+    // All Hazards should be composable
+    "Hazards": [
+      // There are poisons (example: consumes 2 turns) (V1)
       "Poisons",
+      // There are traps (example: locked in room until another player enters or game ends) (V2+)
       "Traps",
-      "Teleports",
-      "WinCheckpoints"
+      // Some rooms will kill the player when entered (V2+)
+      "SuddenDeath"
+    ],
+    // Things that are designed to aid progress
+    // All Boons should be composable
+    "Boons": [
+      // There are teleport tokens (V2+)
+      "TeleportToken",
+      // Can perform the action "RecallMark" to mark a room and "Recall" to teleport back to that room (V2+)
+      "Recall",
+      // Grants the player a key to open a door (V2+)
+      "DoorKey"
+    ],
+    // How to win the game
+    // WinConditions are not required to be composeable but must not be conflicting as all
+    // conditions must be met in order to win.
+    "WinConditions": [
+      // Must collect all checkpoint tokens (V1)
+      "Checkpoints",
+      // Must be the first player to exit the map (V1)
+      "FirstToExit",
+      // Must be the last player alive (V2+)
+      "LastManStanding"
     ]
   },
+  // How many players are in the game (including you)
   "PlayerCount": 4,
-  "YourID": 2,
+  // Your player number (All public broadcasts will identify you as this number)
+  "PlayerID": 1,
+  // Your unique key (All private messages will identify you as this ID)
+  "PlayerKey": "45523e6d-01fc-445f-aec1-bccb917f8b53",
+  // API version the map is using
   "Version": 1
 }

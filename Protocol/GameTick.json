@@ -1,39 +1,85 @@
+/**
+ * Current status of the game, and signals the begining of a new turn.
+ */
 {
+  // Master ID of the in-progress game map
   "GameID": "8250e8b8-ae41-4ebc-9aeb-86b029bbff5c",
+  // Current game turn
+  "Turn": 12,
+  // Players still in the game
+  // If a rule is in effect that disables knowledge of other players,
+  // such as "Isolation" this section will be empty, with the exception
+  // of a player winning the game.
   "Players": [
     {
+      // ID of the player
       "ID": 1,
+      // Position of the player (if given)
       "Position": {
         "X": 0,
         "Y": 0
       },
+      // Actions performed by the player. These will only include broadcast-able
+      // actions. Will not include actions such as "Moved" or "Waiting"
+      // Note however that if position is give a "Moved"/"Teleport" can be infered.
       "Actions": [
-        "Shout",
-        "Exited"
+        // Player shouted
+        "Shout"
+      ],
+      // Status of the player this turn. These will only include broadcast-able
+      // statuses. Will not include statuses such as "Poisioned" or "Trapped"
+      // Note that after a player leaves the game, for any reason
+      // clients will no longer recive updates for that player.
+      "Status": [
+        // Player is no longer in the game
+        "LeftGame",
+        // Player won the game
+        "WonGame",
+        // Player can no longer take actions
+        "Perished"
       ]
     }
   ],
+  // Description of the room the player is in
   "Room": {
+    // Doors in the room
     "Doors": [
+      // North
       "N",
+      // East
       "E",
+      // South
       "S",
+      // West
       "W"
     ],
+    // Entities in the room
     "Entities": [
       {
+        // What kind of entity
         "Type": "Token",
+        // ID of the entity
+        // Note that for checkpoint tokens, this is their serial number.
+        // This also means that ID's are only unique to their type. There will
+        // never be more than one Token with the same ID, however a Token may
+        // have the same ID as another type, such as player
         "ID": 2
       },
+      // Note about type player, if the rule "Stealth" is in effect, this will be
+      // the only source of information about other players.
       {
         "Type": "Player",
-        "ID": 4
+        "ID": 2
       }
     ]
   },
+  // Actions the server will accept from the player this turn
   "AllowedActions": [
+    // Move to an adjacent room (See PlayerAction for more details)
     "Move",
+    // Player is allowed to shout
     "Shout",
+    // Player is allowed to do nothing
     "Wait"
   ]
 }
