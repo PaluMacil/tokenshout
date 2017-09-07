@@ -30,7 +30,7 @@
       "X": 1,
       "Y": 0
     },
-    // Action(s) performed. 
+    // Action(s) performed.
     // If multiple actions are given, only one may be a turn-consuming action.
     // If multiple turn-consuming actions are given, only the first turn-consuming
     // action will be performed.

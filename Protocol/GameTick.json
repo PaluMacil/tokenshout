@@ -6,7 +6,7 @@
   "GameID": "8250e8b8-ae41-4ebc-9aeb-86b029bbff5c",
   // Current game turn
   "Turn": 12,
-  // Players still in the game
+  // Players still in the game, excluding this player
   // If a rule is in effect that disables knowledge of other players,
   // such as "Isolation" this section will be empty, with the exception
   // of a player winning the game.
@@ -42,6 +42,11 @@
   ],
   // Description of the room the player is in
   "Room": {
+    // Position of the room (and this player) if given.
+    "Position": {
+      "X": 0,
+      "Y": 3
+    },
     // Doors in the room
     "Doors": [
       // North
@@ -81,5 +86,6 @@
     "Shout",
     // Player is allowed to do nothing
     "Wait"
-  ]
+  ],
+  "PlayerKey": "45523e6d-01fc-445f-aec1-bccb917f8b53"
 }

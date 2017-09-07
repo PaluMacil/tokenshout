@@ -18,8 +18,10 @@
       "Doors",
       // Rooms have doors that only allow passage in one direction (V2+)
       "OneWayDoors",
-      // Some doors require a key to open (V2+)
+      // Some doors require being unlocked (See Boon DoorSwitch) (V2+)
       "LockedDoors",
+      // When a door is unlocked, it is unlocked for all players (V2+)
+      "SharedDoorLocks",
       // There are checkpoints tokens (amount unknown) (V1)
       "Checkpoints",
       // Must shout to claim checkpoint token in same room as player (V1)
@@ -39,7 +41,11 @@
       // There are traps (example: locked in room until another player enters or game ends) (V2+)
       "Traps",
       // Some rooms will kill the player when entered (V2+)
-      "SuddenDeath"
+      "SuddenDeath",
+      // Rooms and any players in them, may randomly change position (V2+)
+      "ShiftingRooms",
+      // All postion information is suppressed (V2+)
+      "Lost"
     ],
     // Things that are designed to aid progress
     // All Boons should be composable
@@ -48,8 +54,10 @@
       "TeleportToken",
       // Can perform the action "RecallMark" to mark a room and "Recall" to teleport back to that room (V2+)
       "Recall",
-      // Grants the player a key to open a door (V2+)
-      "DoorKey"
+      // Opens a locked door for the player (V2+)
+      // When a door is unlocked, where that door is is not provided. (Or should it be? And if so how?)
+      // Unless rule "SharedDoorLocks" is active, each player must unlock the door(s).
+      "DoorSwitch"
     ],
     // How to win the game
     // WinConditions are not required to be composeable but must not be conflicting as all
